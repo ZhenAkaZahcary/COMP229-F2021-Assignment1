@@ -5,27 +5,27 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req:express.Request, res:express.Response, next:express.NextFunction) {
-  res.render('index', { title: 'Home' });
+  res.render('index', { title: 'Home', page: 'home' });
 });
 
 router.get('/home', function(req:express.Request, res:express.Response, next:express.NextFunction) {
-  res.render('index', { title: 'Home' });
+  res.render('index', { title: 'Home', page:'home' });
 });
 
 router.get('/about', function(req:express.Request, res:express.Response, next:express.NextFunction) {
-  res.render('index', { title: 'About Me' });
+  res.render('index', { title: 'About Me', page:'about'});
 });
 
 router.get('/services', function(req:express.Request, res:express.Response, next:express.NextFunction) {
-  res.render('index', { title: 'Services' });
+  res.render('index', { title: 'Services', page:'services' });
 });
 
 router.get('/projects', function(req:express.Request, res:express.Response, next:express.NextFunction) {
-  res.render('index', { title: 'Projects' });
+  res.render('index', { title: 'Projects', page:'projects'});
 });
 
 router.get('/contact', function(req:express.Request, res:express.Response, next:express.NextFunction) {
-  res.render('index', { title: 'Contact' });
+  res.render('index', { title: 'Contact', page:'contact'});
 });
 
 export default router;
