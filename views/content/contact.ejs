@@ -1,8 +1,36 @@
 <div class="container">
-      <h1>
-        <%= title %>
-      </h1>
-      <p>
-        Welcome to <%= title %> page
-      </p>
+  <h1>
+    <%= title %>
+  </h1>
+  <p>
+    Welcome to <%= title %> page
+  </p>
+  <div class="contact">
+  
+  <div class="sendMsg">
+    <form method="POST" action="mailto:zachar1xu@gmail.com">  
+       <fieldset>
+      <legend>Customer Info</legend>
+      <label>First Name:</label><input name="txtFirstName" size="25" tabindex="1" type="text"><br>
+      <label>Last Name:</label><input name="txtLastName" size="25" tabindex="3" type="text"><br>
+      <label>Phone:</label><input name="txtPhone" size="25" tabindex="5" type="text"><br>
+      <label>E-mail:</label><input name="txtEmail" size="25" tabindex="7" type="text"><br>	
+      <label>Message:</label> <br><textarea name="" id="" cols="30" rows="10" placeholder="Please leave your message here and I will respond to you as soon as possible"></textarea>
+      <br>
+      <input type="submit" value="Submit Message" id="submit" >
+    </fieldset>
+    </form>
+    <button id="button1">Back to Home</button>
+   
+  </div>
+
+  <div class="contactInfo">
+
+    <img class="selfie" src="./assets/images/selfie.jpg" alt=""> 
+    <Strong style="display: block;">Zhen Xu</Strong>
+    <p>Phone: (416)710-4222</p>
+    <a href="mailto:zachar1xu@gmail.com">Email: zachar1xu@gmail.com</a>
+  </div>
+
+  </div>
 </div>

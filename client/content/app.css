@@ -47,3 +47,47 @@
 .service div {
     float: left;
 }
+/* CSS For Contact Page*/
+.sendMsg {
+    float: left;
+    width: 500px;
+    height: 500px;
+}
+.contactInfo {
+    text-align: center;
+    float: right;
+    width: 500px;
+    height: 500px;
+    margin-bottom: 100px;
+}
+.selfie {
+    width: 300px;
+    height: 400px;
+}
+.sendMsg fieldset {
+    width: 500px;
+    border-width: 2px;
+    border-radius: 10px;
+    border-style:groove;
+    border-color: lightgray; 
+ 
+}
+.sendMsg legend {
+    font-size: x-large;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    float: none;
+    width:auto;
+    margin-left: 10px; 
+}
+.sendMsg label {
+    width: 100px;
+    text-align: right;
+}
+.sendMsg textarea {
+    margin-left: 100px;
+}
+#button1 {
+    border: lightgray;
+    margin-top: 20px;
+}
