@@ -19,7 +19,7 @@
 /* CSS For Project Page*/
 .project {
     height: 600px;
-    
+
 }
 .project img {
     height: 500px;
@@ -33,4 +33,17 @@
     margin-top: 100px;
 
     margin-left: 50px;
+}
+/* CSS For Service Page*/
+.service {
+    margin-top: 100px;
+    height: 250px;
+}
+.service img {
+    width: 350px;
+    height: 200px;
+    margin-right: 40px;
+}
+.service div {
+    float: left;
 }
