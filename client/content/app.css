@@ -91,3 +91,11 @@
     border: lightgray;
     margin-top: 20px;
 }
+/*CSS For About Me Page*/
+.introduction {
+    float: left;
+    margin-top: 100px;
+}
+.introduction a {
+    text-decoration: none;
+}
