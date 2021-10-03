@@ -1,3 +1,10 @@
+/*
+File Name: app.js
+Student Name: Zhen Xu
+Student ID : 301151647
+Date: Oct 3, 2021
+*/
+
 'use strict';
 (() => {
     function Start() {
