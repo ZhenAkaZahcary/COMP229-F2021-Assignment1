@@ -3,9 +3,8 @@ import express from 'express';
 import path from 'path';
 import logger from 'morgan';
 import cookieParser from "cookie-parser";
-
 import indexRouter from './routes/index';
-
+import  mongoose  from 'mongoose';
 
 
 const app = express();
@@ -21,8 +20,18 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 
+//instantiate mongo
+mongoose.connect('mongodb://localhost:27017/shoes');
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error'));
+db.once('open',function(){
+  console.log('connection to MongoDB at: mongodb://localhost:27017/shoes');
+})
 
+
+//instantiate express ap
 app.use('/', indexRouter);
+
 
 
 // catch 404 and forward to error handler
