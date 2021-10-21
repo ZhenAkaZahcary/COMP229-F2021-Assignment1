@@ -4,6 +4,7 @@ import path from 'path';
 import logger from 'morgan';
 import cookieParser from "cookie-parser";
 import indexRouter from '../routes/index';
+import contactRouter from '../routes/contact';
 import  mongoose  from 'mongoose';
 
 
@@ -33,8 +34,9 @@ app.use(express.static(path.join(__dirname, '../../node_modules')));
 
 
 
-
+//Router middleware
 app.use('/', indexRouter);
+app.use('/contact/', contactRouter);
 
 
 
