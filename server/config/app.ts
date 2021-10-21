@@ -3,33 +3,37 @@ import express from 'express';
 import path from 'path';
 import logger from 'morgan';
 import cookieParser from "cookie-parser";
-import indexRouter from './routes/index';
+import indexRouter from '../routes/index';
 import  mongoose  from 'mongoose';
 
 
+//DB Configuration
+import * as DBConfig from './db';
+mongoose.connect(DBConfig.LocalURL);
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error'));
+db.once('open',function(){
+  console.log('connection to MongoDB at:' + DBConfig.HostName);
+})
+
+//App Configuration
 const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'node_modules')));
-
-//instantiate mongo
-mongoose.connect('mongodb://localhost:27017/shoes');
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error'));
-db.once('open',function(){
-  console.log('connection to MongoDB at: mongodb://localhost:27017/shoes');
-})
+app.use(express.static(path.join(__dirname, '../../public')));
+app.use(express.static(path.join(__dirname, '../../node_modules')));
 
 
-//instantiate express ap
+
+
 app.use('/', indexRouter);
 
 

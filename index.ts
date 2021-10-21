@@ -8,7 +8,7 @@ import debug from 'debug';
 debug('week3-005"server');
 import createError from 'http-errors';
 
-import app from './app';
+import app from './server/config/app';
 
 
 
