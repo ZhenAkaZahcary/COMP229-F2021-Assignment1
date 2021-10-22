@@ -13,7 +13,7 @@ router.get('/list', DisplayContactListPage);
 
 
 //(UPDATE) display contact list edit page
-router.get('/edit', DisplayEditPage);
+router.get('/edit/:id', DisplayEditPage);
 //(UPDATE) process contact/edit/:id
 router.post('/edit/:id', ProcessEditPage);
 

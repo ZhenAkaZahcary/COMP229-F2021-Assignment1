@@ -6,13 +6,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProcessDeletePage = exports.ProcessEditPage = exports.DisplayEditPage = exports.DisplayContactListPage = exports.ProcessAddPage = exports.DisplayAddPage = void 0;
 const contact_1 = __importDefault(require("../models/contact"));
 function DisplayAddPage(req, res, next) {
-    res.render('index', { title: 'Add Contact', page: 'contact/contact-add', item: '' });
+    res.render('index', { title: 'Add Contact', page: 'contact/contact-edit', item: '' });
 }
 exports.DisplayAddPage = DisplayAddPage;
 function ProcessAddPage(req, res, next) {
     let newItem = new contact_1.default({
-        "contactName": req.body.contactName,
-        "contactNumber": req.body.contactNumber,
+        "ContactName": req.body.contactName,
+        "ContactNumber": req.body.contactNumber,
         "emailAddress": req.body.emailAddress
     });
     contact_1.default.create(newItem, function (err) {
@@ -50,8 +50,8 @@ function ProcessEditPage(req, res, next) {
     let id = req.params.id;
     let updatedItem = new contact_1.default({
         "_id": id,
-        "contactName": req.body.contactName,
-        "contactNumber": req.body.contactNumber,
+        "ContactName": req.body.contactName,
+        "ContactNumber": req.body.contactNumber,
         "emailAddress": req.body.emailAddress
     });
     contact_1.default.updateOne({ _id: id }, updatedItem, {}, function (err) {

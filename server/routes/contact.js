@@ -9,7 +9,7 @@ const router = express_1.default.Router();
 router.get('/add', contact_1.DisplayAddPage);
 router.post('/add', contact_1.ProcessAddPage);
 router.get('/list', contact_1.DisplayContactListPage);
-router.get('/edit', contact_1.DisplayEditPage);
+router.get('/edit/:id', contact_1.DisplayEditPage);
 router.post('/edit/:id', contact_1.ProcessEditPage);
 router.get('/delete/:id', contact_1.ProcessDeletePage);
 exports.default = router;

@@ -4,14 +4,14 @@ import ContactModel from '../models/contact';
 
 //(CREATE) Display contact list add page
 export function DisplayAddPage(req: express.Request, res: express.Response, next: express.NextFunction){
-    res.render('index', {title: 'Add Contact', page: 'contact/contact-add', item :''});
+    res.render('index', {title: 'Add Contact', page: 'contact/contact-edit', item :''});
 }
 
 //(CREATE) Process add page
 export function ProcessAddPage(req: express.Request, res: express.Response, next: express.NextFunction): void {
     let newItem = new ContactModel({
-        "contactName": req.body.contactName,
-        "contactNumber": req.body.contactNumber,
+        "ContactName": req.body.contactName,
+        "ContactNumber": req.body.contactNumber,
         "emailAddress": req.body.emailAddress
     });
 
@@ -53,8 +53,8 @@ export function ProcessEditPage(req: express.Request, res: express.Response, nex
     let id = req.params.id;
     let updatedItem = new ContactModel({
         "_id": id,
-        "contactName": req.body.contactName,
-        "contactNumber": req.body.contactNumber,
+        "ContactName": req.body.contactName,
+        "ContactNumber": req.body.contactNumber,
         "emailAddress": req.body.emailAddress
     });
 

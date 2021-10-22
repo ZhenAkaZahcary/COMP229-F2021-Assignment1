@@ -3,6 +3,7 @@
         <%= title %>
     </h1>
     <div class="row">
+        <a href="/contact/add" id="addButton" class="btn btn-primary mb-1"><i class="fas fa-plus-circle"></i> Add Contact</a>
         <div class="col"><table class="table">
             <thead>
               <tr>
@@ -20,7 +21,8 @@
                 <td><%=collection[count].ContactName %></td>
                 <td><%=collection[count].ContactNumber %></td>
                 <td><%=collection[count].emailAddress %></td>
-                
+                <td><a href="/contact/edit/<%= collection[count]._id %>" class="btn btn-primary btn-sm edit"><i class="fas fa-edit fa-sm"></i> Edit</a></td>
+                <td><a href="/contact/delete/<%= collection[count]._id %>" class="btn btn-danger btn-sm delete"><i class="fas fa-trash-alt fa-sm"></i> Delete</a></td>
               </tr>
               <% } %>
             </tbody>
