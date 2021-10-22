@@ -1,5 +1,5 @@
 import express from 'express';
-import { DisplayContactListPage } from '../controllers/contact';
+import { DisplayContactListPage, DisplayEditPage } from '../controllers/contact';
 
 const router = express.Router();
 
@@ -8,4 +8,6 @@ const router = express.Router();
 router.get('/list', DisplayContactListPage);
 
 //Get display contact item edit
+router.get('/edit', DisplayEditPage);
 export default router;
+
