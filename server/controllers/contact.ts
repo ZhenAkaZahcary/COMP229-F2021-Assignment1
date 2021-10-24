@@ -32,7 +32,16 @@ export function DisplayContactListPage(req: express.Request, res: express.Respon
             console.log(err);
             res.end(err);
         }
-           res.render('index', {title: 'Contact List', page: '/contact/contact-list', collection: contactCollection, displayName: UserDisplayName(req)});
+              let sortCollection = contactCollection.sort(function(a: any,b: any){  
+              if(a.ContactName.toLowerCase() < b.ContactName.toLowerCase())
+                return -1;
+              if(a.ContactName.toLowerCase() > b.ContactName.toLowerCase())
+                return 1;
+              else
+                return -1;
+            });   
+        
+           res.render('index', {title: 'Contact List', page: '/contact/contact-list', collection: sortCollection, displayName: UserDisplayName(req)});
     }   
 )}
 //(UPDATE) Display contact edit page

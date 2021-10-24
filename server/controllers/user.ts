@@ -22,15 +22,16 @@ export function DisplayRegisterPage(req: Request, res:Response, next: NextFuncti
     return res.redirect('/contact/list');
 }
 
-export function ProcessRegisterPage(req:Request, res: Response, next: NextFunction){
-    passport.authenticate('signup', function(err, user, info){
+export function ProcessRegisterPage(req: Request, res: Response, next: NextFunction) {
+    passport.authenticate('signup', function (err, user, info) {
         console.log(err, user, info);
-        if(err){
+        if (err) {
             return next(err);
         }
 
-        if(!user){
-            return res.render('index', {title: 'Register', page: 'auth/register', messages: req.flash('registerMessage','User Already Exists'), displayName: UserDisplayName(req)});
+        if (!user) {
+             res.render('index', { title: 'Register', page: 'auth/register', messages: req.flash('registerMessage', 'User Already Exists'), displayName: UserDisplayName(req) })
+
         }
 
         return res.redirect('/auth/login');

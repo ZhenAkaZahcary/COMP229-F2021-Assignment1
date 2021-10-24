@@ -31,7 +31,15 @@ function DisplayContactListPage(req, res, next) {
             console.log(err);
             res.end(err);
         }
-        res.render('index', { title: 'Contact List', page: '/contact/contact-list', collection: contactCollection, displayName: (0, utils_1.UserDisplayName)(req) });
+        let sortCollection = contactCollection.sort(function (a, b) {
+            if (a.ContactName.toLowerCase() < b.ContactName.toLowerCase())
+                return -1;
+            if (a.ContactName.toLowerCase() > b.ContactName.toLowerCase())
+                return 1;
+            else
+                return -1;
+        });
+        res.render('index', { title: 'Contact List', page: '/contact/contact-list', collection: sortCollection, displayName: (0, utils_1.UserDisplayName)(req) });
     });
 }
 exports.DisplayContactListPage = DisplayContactListPage;

@@ -42,7 +42,7 @@ function ProcessRegisterPage(req, res, next) {
             return next(err);
         }
         if (!user) {
-            return res.render('index', { title: 'Register', page: 'auth/register', messages: req.flash('registerMessage', 'User Already Exists'), displayName: (0, utils_1.UserDisplayName)(req) });
+            res.render('index', { title: 'Register', page: 'auth/register', messages: req.flash('registerMessage', 'User Already Exists'), displayName: (0, utils_1.UserDisplayName)(req) });
         }
         return res.redirect('/auth/login');
     })(req, res, next);
