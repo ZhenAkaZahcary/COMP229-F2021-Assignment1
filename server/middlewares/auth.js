@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.isLogin = void 0;
+exports.isLoggedIn = void 0;
 const passport_1 = __importDefault(require("passport"));
 const passport_local_1 = __importDefault(require("passport-local"));
 const user_1 = __importDefault(require("../models/user"));
@@ -69,13 +69,13 @@ const signupFunction = (req, username, password, done) => __awaiter(void 0, void
 });
 passport_1.default.use('login', new LocalStrategy(strategyOptions, loginFunction));
 passport_1.default.use('signup', new LocalStrategy(strategyOptions, signupFunction));
-const isLogin = (req, res, done) => {
+const isLoggedIn = (req, res, done) => {
     if (!req.user) {
         return res.status(401).json({ msg: 'Unauthorized' });
     }
     done(null, req.user);
 };
-exports.isLogin = isLogin;
+exports.isLoggedIn = isLoggedIn;
 passport_1.default.serializeUser((user, done) => {
     done(null, user._id);
 });

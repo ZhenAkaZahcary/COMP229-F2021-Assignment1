@@ -14,10 +14,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProcessLogout = exports.ProcessRegisterPage = exports.DisplayRegisterPage = exports.ProcessLoginPage = exports.DisplayLoginPage = void 0;
 const passport_1 = __importDefault(require("passport"));
+const utils_1 = require("../utils");
 function DisplayLoginPage(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         if (!req.user) {
-            return res.render('index', { title: 'Login', page: 'auth/login', messages: req.flash('loginMessage') });
+            return res.render('index', { title: 'Login', page: 'auth/login', messages: req.flash('loginMessage'), displayName: (0, utils_1.UserDisplayName)(req) });
         }
         return res.redirect('/contact/list');
     });
@@ -29,7 +30,7 @@ function ProcessLoginPage(req, res, next) {
 exports.ProcessLoginPage = ProcessLoginPage;
 function DisplayRegisterPage(req, res, next) {
     if (!req.user) {
-        res.render('index', { title: 'Register', page: 'auth/register', messages: req.flash('registerMessage') });
+        res.render('index', { title: 'Register', page: 'auth/register', messages: req.flash('registerMessage'), displayName: (0, utils_1.UserDisplayName)(req) });
     }
     return res.redirect('/contact/list');
 }
@@ -41,7 +42,7 @@ function ProcessRegisterPage(req, res, next) {
             return next(err);
         }
         if (!user) {
-            return res.render('indext', { title: 'Register', page: 'auth/register', messages: req.flash('User Already Exists') });
+            return res.render('indext', { title: 'Register', page: 'auth/register', messages: req.flash('User Already Exists'), displayName: (0, utils_1.UserDisplayName)(req) });
         }
         return res.redirect('/auth/login');
     })(req, res, next);

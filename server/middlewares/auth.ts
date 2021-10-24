@@ -80,7 +80,7 @@ const signupFunction = async (
 passport.use('login', new LocalStrategy(strategyOptions, loginFunction));
 passport.use('signup', new LocalStrategy(strategyOptions, signupFunction));
 
-export const isLogin = (req: Request, res: Response, done: (error: any, user?: any, options?: IVerifyOptions) => void) => {
+export const isLoggedIn = (req: Request, res: Response, done: (error: any, user?: any, options?: IVerifyOptions) => void) => {
     if (!req.user){
         return res.status(401).json({msg: 'Unauthorized'})
     }

@@ -3,13 +3,35 @@ import express from 'express';
 import path from 'path';
 import logger from 'morgan';
 import cookieParser from "cookie-parser";
-import indexRouter from '../routes/index';
-import contactRouter from '../routes/contact';
-import  mongoose  from 'mongoose';
 
+import indexRouter from '../routes/index';
+import userRouter from '../routes/user';
+import contactRouter from '../routes/contact';
+
+import passport from 'passport';
+
+import session from "express-session";
+import flash from 'connect-flash';
+import { isLoggedIn } from "../middlewares/auth";
 
 //DB Configuration
+import  mongoose  from 'mongoose';
 import * as DBConfig from './db';
+import MongoStore from 'connect-mongo';
+
+
+const StoreOptions = {
+  store: MongoStore.create({
+    mongoUrl : (DBConfig.RemoteURI) ? DBConfig.RemoteURI : DBConfig.LocalURI
+  }),
+  secret: DBConfig.Secret,
+  saveUnitialize: false,
+  resave: false,
+  cookie : {
+    maxAge: 600000
+  } 
+}
+
 mongoose.connect((DBConfig.RemoteURI) ? DBConfig.RemoteURI : DBConfig.LocalURI);
 
 const db = mongoose.connection;
@@ -32,11 +54,20 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../public')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
 
+//setup connect-flash
+app.use(flash());
 
+//express-session initialization
+app.use(session(StoreOptions));
+
+//passport initialization
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Router middleware
 app.use('/', indexRouter);
-app.use('/contact/', contactRouter);
+app.use('/contact/', isLoggedIn, contactRouter);
+app.use('/auth', userRouter);
 
 
 

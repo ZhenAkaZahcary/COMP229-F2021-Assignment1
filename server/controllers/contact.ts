@@ -1,10 +1,11 @@
 import express from 'express';
 
 import ContactModel from '../models/contact';
+import { UserDisplayName } from '../utils';
 
 //(CREATE) Display contact list add page
 export function DisplayAddPage(req: express.Request, res: express.Response, next: express.NextFunction){
-    res.render('index', {title: 'Add Contact', page: 'contact/contact-edit', item :''});
+    res.render('index', {title: 'Add Contact', page: 'contact/contact-edit', item :'', displayName: UserDisplayName(req)});
 }
 
 //(CREATE) Process add page
@@ -31,7 +32,7 @@ export function DisplayContactListPage(req: express.Request, res: express.Respon
             console.log(err);
             res.end(err);
         }
-           res.render('index', {title: 'Contact List', page: '/contact/contact-list', collection: contactCollection});
+           res.render('index', {title: 'Contact List', page: '/contact/contact-list', collection: contactCollection, displayName: UserDisplayName(req)});
     }   
 )}
 //(UPDATE) Display contact edit page
@@ -44,7 +45,7 @@ export function DisplayEditPage(req: express.Request, res: express.Response, nex
             res.end(err);
         }
             console.log(contactItemToEdit);
-            res.render('index', {title: 'Contact Edit', page: '/contact/contact-edit', item: contactItemToEdit});
+            res.render('index', {title: 'Contact Edit', page: '/contact/contact-edit', item: contactItemToEdit, displayName: UserDisplayName(req)});
     }
 )}
 

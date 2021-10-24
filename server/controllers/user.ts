@@ -1,9 +1,10 @@
 import { NextFunction, Request, Response } from "express";
 import passport from "passport";
+import { UserDisplayName } from "../utils";
 
 export async function DisplayLoginPage(req: Request, res:Response){
     if(!req.user){
-        return res.render('index', {title: 'Login', page: 'auth/login', messages: req.flash('loginMessage')})
+        return res.render('index', {title: 'Login', page: 'auth/login', messages: req.flash('loginMessage'), displayName: UserDisplayName(req)})
     }
 
     return res.redirect('/contact/list');
@@ -15,7 +16,7 @@ export function ProcessLoginPage(req: Request, res:Response, next: NextFunction)
 
 export function DisplayRegisterPage(req: Request, res:Response, next: NextFunction){
     if(!req.user){
-        res.render('index', {title: 'Register', page: 'auth/register', messages: req.flash('registerMessage')})
+        res.render('index', {title: 'Register', page: 'auth/register', messages: req.flash('registerMessage'), displayName: UserDisplayName(req)})
     }
 
     return res.redirect('/contact/list');
@@ -29,7 +30,7 @@ export function ProcessRegisterPage(req:Request, res: Response, next: NextFuncti
         }
 
         if(!user){
-            return res.render('indext', {title: 'Register', page: 'auth/register', messages: req.flash('User Already Exists')});
+            return res.render('indext', {title: 'Register', page: 'auth/register', messages: req.flash('User Already Exists'), displayName: UserDisplayName(req)});
         }
 
         return res.redirect('/auth/login');
