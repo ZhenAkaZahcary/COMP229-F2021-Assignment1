@@ -7,7 +7,7 @@ const express_1 = require("express");
 const user_1 = require("../controllers/user");
 const auth_1 = __importDefault(require("../middlewares/auth"));
 const router = (0, express_1.Router)();
-router.get('/get', user_1.DisplayLoginPage);
+router.get('/login', user_1.DisplayLoginPage);
 router.post('/login', auth_1.default.authenticate('login'), user_1.ProcessLoginPage);
 router.get('/register', user_1.DisplayRegisterPage);
 router.post('/register', user_1.ProcessRegisterPage);

@@ -5,7 +5,7 @@ import passport from '../middlewares/auth';
 
 const router = Router();
 
-router.get('/get', DisplayLoginPage);
+router.get('/login', DisplayLoginPage);
 router.post('/login', passport.authenticate('login'), ProcessLoginPage);
 
 router.get('/register', DisplayRegisterPage);

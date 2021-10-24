@@ -31,16 +31,16 @@ const loginFunction: any = async (
 }
 
 const signupFunction = async (
-    req:Request, 
+    req: Request, 
     username: string, 
     password: string,
     done: (error: any, user?: any, options?: IVerifyOptions) => void) => {
        try{
         //deconstructing
         const {username, password, FirstName, LastName, email} = req.body;
-        console.log(req.body);
+        console.log(req.body);  
 
-        if(!!username || !password || !email || !FirstName || !LastName){
+        if(!username || !password || !email || !FirstName || !LastName){
             console.log("Invalid body fields");
             return done(null, false);  
         }
@@ -67,7 +67,7 @@ const signupFunction = async (
             }
 
             const newUser = new UserModel(userData);
-            await newUser.save();
+            await newUser.save();   
             return done(null, newUser);
         }
 
@@ -75,10 +75,11 @@ const signupFunction = async (
        catch(err){
            done(err);
        }
-} 
+}; 
 
 passport.use('login', new LocalStrategy(strategyOptions, loginFunction));
 passport.use('signup', new LocalStrategy(strategyOptions, signupFunction));
+
 
 export const isLoggedIn = (req: Request, res: Response, done: (error: any, user?: any, options?: IVerifyOptions) => void) => {
     if (!req.user){
@@ -89,7 +90,7 @@ export const isLoggedIn = (req: Request, res: Response, done: (error: any, user?
 }
 
 interface User {
-    _id? :String
+    _id? :String;
 }
 
 passport.serializeUser((user: User, done) => {
@@ -99,7 +100,7 @@ passport.serializeUser((user: User, done) => {
 passport.deserializeUser((userId, done) => {
     UserModel.findById(userId, function(err: any, user:any){
         done(err, user);
-    })
+    });
 })
 
 export default passport;
