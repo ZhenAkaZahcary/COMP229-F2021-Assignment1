@@ -105,3 +105,39 @@ Date: Oct 3, 2021
 .introduction a {
     text-decoration: none;
 }
+
+/*CSS For Login Page*/
+
+h1.login {
+    text-align: center;
+    margin-top: 50px;
+}
+.registerHere p {
+    text-align: center;
+    font-size: large;
+}
+
+.registerHere a {
+    text-decoration: none;
+}
+
+/*CSS For Register Page*/
+h1.register {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+p.lead {
+    font-weight: 700;
+}
+
+.haveAcc p {
+    text-align: center;
+    font-size: large;
+}
+
+.haveAcc a {
+    text-decoration: none;
+}
+

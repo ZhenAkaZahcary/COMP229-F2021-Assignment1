@@ -33,6 +33,7 @@ export function ProcessRegisterPage(req: Request, res: Response, next: NextFunct
              res.render('index', { title: 'Register', page: 'auth/register', messages: req.flash('registerMessage', 'User Already Exists'), displayName: UserDisplayName(req) })
 
         }
+        
 
         return res.redirect('/auth/login');
     })(req, res, next);
