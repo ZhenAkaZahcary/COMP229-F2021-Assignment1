@@ -31,7 +31,7 @@ const index_1 = __importDefault(require("../routes/index"));
 const contact_1 = __importDefault(require("../routes/contact"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const DBConfig = __importStar(require("./db"));
-mongoose_1.default.connect(DBConfig.LocalURL);
+mongoose_1.default.connect((DBConfig.RemoteURI) ? DBConfig.RemoteURI : DBConfig.LocalURI);
 const db = mongoose_1.default.connection;
 db.on('error', console.error.bind(console, 'connection error'));
 db.once('open', function () {

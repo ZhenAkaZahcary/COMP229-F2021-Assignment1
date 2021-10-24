@@ -10,7 +10,7 @@ import  mongoose  from 'mongoose';
 
 //DB Configuration
 import * as DBConfig from './db';
-mongoose.connect(DBConfig.LocalURL);
+mongoose.connect((DBConfig.RemoteURI) ? DBConfig.RemoteURI : DBConfig.LocalURI);
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
